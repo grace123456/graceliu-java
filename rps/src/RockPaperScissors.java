@@ -10,6 +10,7 @@ import java.util.Random;
 
     public class RockPaperScissors {
         public static void main(String[] args) {
+            1=1;
 
             //prompt for user input name and how many rounds to play
             System.out.println("Enter name of player");
