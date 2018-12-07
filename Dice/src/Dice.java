@@ -6,62 +6,68 @@ public class Dice {
     public static void main(String[] args) {
         System.out.println("Would you like to play a game? yes/no");
         Scanner playGame = new Scanner(System.in);
+        String[][] dice = new String[6][5];
+        String[][] gameDice = new String[DICENUM][5];
         String playAgain = playGame.next();
 
-        defineDice();
-        printDice();
+        defineDice(dice);
+        printDice(dice);
 
         while(playAgain.equals("yes")){
 
             rollDice();
 
-            printDice();
+            printDice(gameDice);
 
             drawLine();
 
-            System.out.println("Would you like to play again?");
+            System.out.println("Would you like to play again? yes/no");
             playAgain = playGame.next();
 
         }
 
     }
-    public static void defineDice(){
+    public static void defineDice(String[][]dice){
 
         System.out.println("define dice");
-        String[][] dice = new String[6][5];
-        String[][] gameDice = new String[DICENUM][];
+
         for (int i = 0;i < 6;i++){
             dice[i][0]= (" ------- ");
             dice[i][4]= (" ------- ");
 
             if (i == 0){
-                dice[i][1]=  ("|       |");
-                System.out.println("|   *   |");
-                System.out.println("|       |");
+                dice[i][1]= ("|       |");
+                dice[i][2]= ("|   *   |");
+                dice[i][3]= ("|       |");
 
-            }else if(dice == 2) {
-                System.out.println("|       |");
-                System.out.println("|  * *  |");
-                System.out.println("|       |");
-
-            }else if(dice == 3){
-                System.out.println("| *     |");
-                System.out.println("|   *   |");
-                System.out.println("|     * |");
-            }else if (dice == 4){
-                System.out.println("|  * *  |");
-                System.out.println("|       |");
-                System.out.println("|  * *  |");
-            }else if (dice == 5){
-                System.out.println("|  * *  |");
-                System.out.println("|   *   |");
-                System.out.println("|  * *  |");
-            }else if (dice == 6){
-                System.out.println("|  * *  |");
-                System.out.println("|  * *  |");
-                System.out.println("|  * *  |");
             }
-            System.out.println(" ------- ");
+            if(i == 1) {
+                dice[i][1]= ("|       |");
+                dice[i][2]= ("|  * *  |");
+                dice[i][3]= ("|       |");
+
+            }
+            if(i == 2){
+                dice[i][1]= ("| *     |");
+                dice[i][2]= ("|   *   |");
+                dice[i][3]= ("|     * |");
+            }
+            if (i == 3){
+                dice[i][1]= ("|  * *  |");
+                dice[i][2]= ("|       |");
+                dice[i][3]= ("|  * *  |");
+            }
+            if (i == 4){
+                dice[i][1]= ("|  * *  |");
+                dice[i][2]= ("|   *   |");
+                dice[i][3]= ("|  * *  |");
+            }
+            if (i == 5){
+                dice[i][1]= ("|  * *  |");
+                dice[i][2]= ("|  * *  |");
+                dice[i][3]= ("|  * *  |");
+            }
+
 
 
 
@@ -70,8 +76,18 @@ public class Dice {
 
     }
 
-    public static void printDice(){
+    public static void printDice(String[][]dice){
         System.out.println("print dice");
+        for(int i = 0; i<dice.length; i++)
+        {
+            for(int j = 0; j<dice[i].length; j++)
+            {
+                System.out.println(dice[i][j]);
+            }
+            System.out.println();
+        }
+
+
 
     }
 
