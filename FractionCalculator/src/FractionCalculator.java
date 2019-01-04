@@ -14,7 +14,8 @@ public class FractionCalculator {
         System.out.println("Enter number or quit");
         Scanner input = new Scanner(System.in);
         String number = input.nextLine();
-        String[] split = number.split("[\\r\\n]+");
+        String[] split = number.split(" ");
+
         for (int i = 0; i < split.length; i++){
             System.out.println(split[i]);
         }
