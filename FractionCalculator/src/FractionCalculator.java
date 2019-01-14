@@ -11,21 +11,48 @@ import java.lang.Integer;
 
 public class FractionCalculator {
     public static void main(String[] args) {
-        System.out.println("Enter number or quit");
+        System.out.println("Continue or quit");
+
         Scanner input = new Scanner(System.in);
-        String number = input.nextLine();
-        String[] split = number.split(" ");
+        String yes = input.next();
+
+        /*String[] split = number.split(" ");
 
         for (int i = 0; i < split.length; i++){
             System.out.println(split[i]);
         }
+        */
 
-        while(!(number.equals("quit"))){
+
+        while(!(yes.equals("quit"))){
+
+            System.out.println("Enter number");
+
+            String one = input.next();
+            String two = input.next();
+            String three = input.next();
+            System.out.println(one);
+            System.out.println(two);
+            System.out.println(three);
 
 
             System.out.println("Enter next number or quit");
-            number = input.nextLine();
+            yes = input.nextLine();
+
         }
+
+        /*public static int parseWhole() {
+
+        }
+
+        public static int parseNumerator() {
+
+        }
+
+        public static int parseDenominator() {
+
+        }
+        */
 
     }
 
