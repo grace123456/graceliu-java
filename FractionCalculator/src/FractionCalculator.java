@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.lang.Math;
 import java.lang.String;
 import java.lang.Integer;
+import java.util.ArrayList;
 
 public class FractionCalculator {
     public static void main(String[] args) {
@@ -23,8 +24,10 @@ public class FractionCalculator {
         }
         */
 
+        String fraction = "23/24";
+        parseWhole(fraction);
 
-        while(!(yes.equals("quit"))){
+        while (!(yes.equals("quit"))) {
 
             System.out.println("Enter number");
 
@@ -41,20 +44,37 @@ public class FractionCalculator {
 
         }
 
-        /*public static int parseWhole() {
 
-        }
 
-        public static int parseNumerator() {
+        /*public static int parseNumerator() {
 
         }
 
         public static int parseDenominator() {
 
+        }*/
+
+
+    }
+
+    public static void parseWhole(String fraction) {
+        String parse = "";
+        for (int i = 0; i < fraction.length(); i++) {
+            if (Character.isDigit(fraction.charAt(i))) {
+                parse += fraction.charAt(i);
+            } else {
+                System.out.println(parse);
+                parse = "";
+            }
+            //System.out.println(fraction.charAt(i ));
+
+            }
+
+        System.out.println(parse );
+
         }
-        */
 
     }
 
 
-}
+
