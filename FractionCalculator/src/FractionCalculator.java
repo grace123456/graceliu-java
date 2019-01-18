@@ -24,8 +24,10 @@ public class FractionCalculator {
         }
         */
 
-        String fraction = "23/24";
-        parseWhole(fraction);
+        String fraction = "23/5_24/3";
+        //parseWhole(fraction);
+        //parseNumerator(fraction);
+        parseDenomenator(fraction);
 
         while (!(yes.equals("quit"))) {
 
@@ -73,6 +75,42 @@ public class FractionCalculator {
         System.out.println(parse );
 
         }
+
+        public static void parseNumerator(String fraction) {
+            String parse = "";
+            for (int i = 0; i < fraction.length(); i++) {
+                if (Character.isDigit(fraction.charAt(i))) {
+                    parse += fraction.charAt(i);
+                } else {
+                    System.out.println(parse);
+                    parse = "";
+                }
+                //System.out.println(fraction.charAt(i ));
+
+            }
+
+            System.out.println(parse );
+
+        }
+
+        public static void parseDenomenator (String fraction){
+            String parse = "";
+            for (int i = 0; i < fraction.length(); i++) {
+                if (Character.isDigit(fraction.charAt(i))) {
+                    parse += fraction.charAt(i);
+                } else {
+                    System.out.println(parse);
+                    parse = "";
+                }
+                //System.out.println(fraction.charAt(i ));
+
+            }
+
+            System.out.println(parse );
+
+        }
+
+
 
     }
 
