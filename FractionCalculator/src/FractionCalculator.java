@@ -11,6 +11,18 @@ import java.lang.Integer;
 import java.util.ArrayList;
 
 public class FractionCalculator {
+
+    public static int whole1;
+    public static int whole2;
+    public static int num1;
+    public static int num2;
+    public static int den2;
+    public static int den1;
+    public static int wholefinal;
+    public static int numfinal;
+    public static int denfinal;
+
+
     public static void main(String[] args) {
         System.out.println("Continue or quit");
 
@@ -24,21 +36,49 @@ public class FractionCalculator {
         }
         */
 
-        String fraction = "23/5_24/3";
-        //parseWhole(fraction);
-        //parseNumerator(fraction);
-        parseDenomenator(fraction);
 
         while (!(yes.equals("quit"))) {
 
             System.out.println("Enter number");
 
             String one = input.next();
+            String operator = input.next();
             String two = input.next();
-            String three = input.next();
             System.out.println(one);
+            System.out.println(operator);
             System.out.println(two);
-            System.out.println(three);
+
+            //parse operand1
+            if (one.contains("_")) {
+                whole1 = parseWhole(one);
+                num1 = parseNum(one);
+                den1 = parseDen(one);
+                num1 = (whole1 * den1 + num1);
+            } else if (one.contains("/")) {
+                num1 = parseNum(one);
+                den1 = parseDen(one);
+            } else {
+                whole1 = Integer.parseInt(one);
+                num1 = whole1;
+                den1 = 1;
+            }
+            System.out.println("frac1 whole: " + whole1 + "\nfrac1 nume: " + num1 + "\nfrac1 denom: " + den1);
+            //parse operand2
+            if (two.contains("_")) {
+                whole2 = parseWhole(two);
+                num2 = parseNum(two);
+                den2 = parseDen(two);
+                num2 = (whole2 * den2 + num2);
+
+            } else if (two.contains("/")) {
+                num2 = parseNum(two);
+                den2 = parseDen(two);
+            } else {
+                whole2 = Integer.parseInt(two);
+                num2 = whole2;
+                den2 = 1;
+            }
+            System.out.println("frac1 whole: " + whole2 + "\nfrac1 nume: " + num2 + "\nfrac1 denom: " + den2);
 
 
             System.out.println("Enter next number or quit");
@@ -47,72 +87,74 @@ public class FractionCalculator {
         }
 
 
+    }
 
-        /*public static int parseNumerator() {
+    public static int parseWhole(String fraction) {
+        int whole = Integer.parseInt(fraction.substring(0, fraction.indexOf("_")));
+        return whole;
+    }
 
+    public static int parseNum(String fraction) {
+        int num = Integer.parseInt(fraction.substring(fraction.indexOf("_") + 1, fraction.indexOf("/")));
+        return num;
+    }
+
+    public static int parseDen(String fraction) {
+        int Denom = Integer.parseInt(fraction.substring(fraction.indexOf("/") + 1));
+        return Denom;
+    }
+
+    /*public static int littleCalc(int x, int y, int i, int j, String o) {
+        num1 = x;
+        den1 = y;
+        num2 = i;
+        den2 = j;
+        String operator = o;
+        int answer = 0;
+
+        if (operator.equals("+")) {
+            return (answer = (num1 * den2 + den1 * num2) / (den1 * den2));
+        } else if (operator.equals("-")){
+            return (answer = (num1 * den2 - den1 * num2) / (den1 * den2));
+        } else if (operator.equals("*")) {
+            return (answer = (num1 * num2) / (den1 * den2));
+        } else if (operator.equals("/")) {
+            return (answer = (num1 * den2) / (num2 * den1));
         }
+        return answer;
+    }
+    */
+    public static String add(final int num1, final int den1, final int num2, final int den2) {
+        int newn = (num1 * den2) + (num2 * den1);
+        int newd = den1 * den2;
 
-        public static int parseDenominator() {
+            /*int divisor = reduce(newn, newd);
+            newn/=divisor;
+            newd/=divisor;
+            int integerComponent=0;
 
-        }*/
+            while(newn >= newd) {
+                integerComponent++;
+                newn-=newd;
+            }
+            String answer ="";
+            if(integerComponent>0) {
+                answer += integerComponent +"_";
+            }
+            if(newn!=0) {
+                answer += newn+"/"+newd;
+            }
+            return answer;
+        }
+        */
 
 
     }
-
-    public static void parseWhole(String fraction) {
-        String parse = "";
-        for (int i = 0; i < fraction.length(); i++) {
-            if (Character.isDigit(fraction.charAt(i))) {
-                parse += fraction.charAt(i);
-            } else {
-                System.out.println(parse);
-                parse = "";
-            }
-            //System.out.println(fraction.charAt(i ));
-
-            }
-
-        System.out.println(parse );
-
-        }
-
-        public static void parseNumerator(String fraction) {
-            String parse = "";
-            for (int i = 0; i < fraction.length(); i++) {
-                if (Character.isDigit(fraction.charAt(i))) {
-                    parse += fraction.charAt(i);
-                } else {
-                    System.out.println(parse);
-                    parse = "";
-                }
-                //System.out.println(fraction.charAt(i ));
-
-            }
-
-            System.out.println(parse );
-
-        }
-
-        public static void parseDenomenator (String fraction){
-            String parse = "";
-            for (int i = 0; i < fraction.length(); i++) {
-                if (Character.isDigit(fraction.charAt(i))) {
-                    parse += fraction.charAt(i);
-                } else {
-                    System.out.println(parse);
-                    parse = "";
-                }
-                //System.out.println(fraction.charAt(i ));
-
-            }
-
-            System.out.println(parse );
-
-        }
+}
 
 
 
-    }
+
 
 
 
