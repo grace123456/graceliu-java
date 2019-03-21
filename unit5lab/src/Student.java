@@ -11,7 +11,7 @@ public class Student {
         studentGrade = grade;
     }
 
-    public boolean passingOrFailing (ArrayList<Double> grades) {
+    public boolean passingOrFailing () {
         double total = 0;
         double average = 0;
         for (int i = 0; i < grades.size(); i++) {

@@ -8,7 +8,7 @@ public class Janitor extends Employee {
     public int getVacationDays(){
         return 100;
     }
-    public void hardWord(){
+    public void hardWork(){
         System.out.println("Working for the man");
     }
 }

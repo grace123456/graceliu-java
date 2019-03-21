@@ -1,7 +1,7 @@
 /* Grace Liu
 Ms. Transue
 AP CS
-20 January
+18 Feb. 2019
 */
 
 import java.util.Scanner;
@@ -29,15 +29,13 @@ public class FractionCalculator {
         Scanner input = new Scanner(System.in);
         String yes = input.next();
 
-        /*String[] split = number.split(" ");
-
-        for (int i = 0; i < split.length; i++){
-            System.out.println(split[i]);
-        }
-        */
 
 
         while (!(yes.equals("quit"))) {
+            num1 = 0;
+            den1 = 0;
+            num2 = 0;
+            den2 = 0;
 
             System.out.println("Enter number");
 
@@ -53,16 +51,18 @@ public class FractionCalculator {
                 whole1 = parseWhole(one);
                 num1 = parseNum(one);
                 den1 = parseDen(one);
+                System.out.println("hello");
                 num1 = (whole1 * den1 + num1);
             } else if (one.contains("/")) {
                 num1 = parseNum(one);
                 den1 = parseDen(one);
             } else {
                 whole1 = Integer.parseInt(one);
-                num1 = whole1;
+                num1 = 0;
                 den1 = 1;
             }
             System.out.println("frac1 whole: " + whole1 + "\nfrac1 nume: " + num1 + "\nfrac1 denom: " + den1);
+
             //parse operand2
             if (two.contains("_")) {
                 whole2 = parseWhole(two);
@@ -75,11 +75,20 @@ public class FractionCalculator {
                 den2 = parseDen(two);
             } else {
                 whole2 = Integer.parseInt(two);
-                num2 = whole2;
+                num2 = 0;
                 den2 = 1;
             }
             System.out.println("frac1 whole: " + whole2 + "\nfrac1 nume: " + num2 + "\nfrac1 denom: " + den2);
 
+            if (operator.contains("+")){
+                System.out.println(add(num1, den1, num2, den2));
+            } else if (operator.contains("-")) {
+                System.out.println(subtract(num1, den1, num2, den2));
+            } else if (operator.contains("*")) {
+                System.out.println(multiply(num1, den1, num2, den2));
+            } else if (operator.contains("/")) {
+                System.out.println(divide(num1, den1, num2, den2));
+            }
 
             System.out.println("Enter next number or quit");
             yes = input.nextLine();
@@ -90,8 +99,13 @@ public class FractionCalculator {
     }
 
     public static int parseWhole(String fraction) {
-        int whole = Integer.parseInt(fraction.substring(0, fraction.indexOf("_")));
-        return whole;
+
+        if (fraction.contains("_")){
+            int whole = Integer.parseInt(fraction.substring(0, fraction.indexOf("_")));
+            return whole;
+        } else {
+            return 0;
+        }
     }
 
     public static int parseNum(String fraction) {
@@ -104,57 +118,55 @@ public class FractionCalculator {
         return Denom;
     }
 
-    /*public static int littleCalc(int x, int y, int i, int j, String o) {
-        num1 = x;
-        den1 = y;
-        num2 = i;
-        den2 = j;
-        String operator = o;
-        int answer = 0;
 
-        if (operator.equals("+")) {
-            return (answer = (num1 * den2 + den1 * num2) / (den1 * den2));
-        } else if (operator.equals("-")){
-            return (answer = (num1 * den2 - den1 * num2) / (den1 * den2));
-        } else if (operator.equals("*")) {
-            return (answer = (num1 * num2) / (den1 * den2));
-        } else if (operator.equals("/")) {
-            return (answer = (num1 * den2) / (num2 * den1));
-        }
-        return answer;
-    }
-    */
+
     public static String add(final int num1, final int den1, final int num2, final int den2) {
-        int newn = (num1 * den2) + (num2 * den1);
-        int newd = den1 * den2;
-
-            /*int divisor = reduce(newn, newd);
-            newn/=divisor;
-            newd/=divisor;
-            int integerComponent=0;
-
-            while(newn >= newd) {
-                integerComponent++;
-                newn-=newd;
-            }
-            String answer ="";
-            if(integerComponent>0) {
-                answer += integerComponent +"_";
-            }
-            if(newn!=0) {
-                answer += newn+"/"+newd;
-            }
-            return answer;
-        }
-        */
+        int a = whole1 * den1 + num1;
+        int b = den1;
+        int c = whole2 * den2 + num2;
+        int d = den2;
+        int ad = a*d;
+        int bc = b*c;
+        int bd = b*d;
+        ad += bc;
+        return ad + "/" + bd;
 
 
     }
+
+    public static String subtract(final int num1, final int den1,
+                                  final int num2, final int den2) {
+        int a = whole1 * den1 + num1;
+        int b = den1;
+        int c = whole2 * den2 + num2;
+        int d = den2;
+        int ad = a * d;
+        int bc = b * c;
+        int bd = b * d;
+        ad -= bc;
+        return ad + "/" + bd;
+    }
+
+    public static String multiply(final int num1, final int den1,
+                                  final int num2, final int den2) {
+        int a = num1 + whole1 * den1;//1
+        int b = den1;
+        int c = num2 + whole2 * den2;
+        int d = den2;
+        int ad = a * c;
+        int bd = b * d;
+        return ad + "/" + bd;
+    }
+
+    public static String divide(final int num1, final int den1,
+                                final int num2, final int den2) {
+        int a = num1 + whole1 * den1;//1
+        int b = den1;
+        int c = num2 + whole2 * den2;
+        int d = den2;
+        int ad = a * d;
+        int bd = b * c;
+        return ad + "/" + bd;
+    }
+
 }
-
-
-
-
-
-
-
